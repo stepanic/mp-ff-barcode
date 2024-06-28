@@ -62,17 +62,22 @@ class _HomePageWidgetState extends State<HomePageWidget> {
           child: Column(
             mainAxisSize: MainAxisSize.max,
             children: [
-              Container(
-                decoration: BoxDecoration(
-                  color: FlutterFlowTheme.of(context).secondaryBackground,
-                ),
-                child: const SizedBox(
-                  width: 300.0,
-                  height: 300.0,
-                  child: custom_widgets.FFHRBarcodeWidget(
-                    width: 300.0,
-                    height: 300.0,
-                    data: 'Ja sam Matija Stepanic i ovo radi',
+              Expanded(
+                child: Align(
+                  alignment: const AlignmentDirectional(0.0, 0.0),
+                  child: Container(
+                    decoration: BoxDecoration(
+                      color: FlutterFlowTheme.of(context).secondaryBackground,
+                    ),
+                    child: const SizedBox(
+                      width: 256.0,
+                      height: 256.0,
+                      child: custom_widgets.FFHRBarcodeWidget(
+                        width: 256.0,
+                        height: 256.0,
+                        data: 'Ja sam Matija Stepanic i ovo radi',
+                      ),
+                    ),
                   ),
                 ),
               ),
