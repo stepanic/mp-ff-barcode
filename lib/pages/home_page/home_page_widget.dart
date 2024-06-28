@@ -5,7 +5,6 @@ import '/flutter_flow/form_field_controller.dart';
 import '/custom_code/widgets/index.dart' as custom_widgets;
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_markdown/flutter_markdown.dart';
 import 'home_page_model.dart';
 export 'home_page_model.dart';
 
@@ -260,23 +259,6 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                           ),
                         ),
                       ),
-                    ),
-                  ),
-                  Container(
-                    decoration: const BoxDecoration(),
-                    child: MarkdownBody(
-                      data: '''## About
----
-This package is based on [pub:barcode_widget](https://pub.dev/packages/barcode_widget). Please check each barcode type's constraints at an official demo [davbfr.github.io/dart_barcode](https://davbfr.github.io/dart_barcode).
-
-## Support
----
-
-For any feature request, maintenance or consulting services related to the integration of this package, feel free to ask at [ms@ff.hr](mailto:ms@ff.hr)
-
----''',
-                      selectable: true,
-                      onTapLink: (_, url, __) => launchURL(url!),
                     ),
                   ),
                 ]
