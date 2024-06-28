@@ -3,10 +3,9 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/form_field_controller.dart';
 import '/custom_code/widgets/index.dart' as custom_widgets;
-import 'package:flutter/gestures.dart';
+import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
-import 'package:url_launcher/url_launcher.dart';
 import 'home_page_model.dart';
 export 'home_page_model.dart';
 
@@ -29,7 +28,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
 
     _model.barcodeDataTextController ??= TextEditingController();
     _model.barcodeDataFocusNode ??= FocusNode();
-
+    _model.barcodeDataFocusNode!.addListener(() => setState(() {}));
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
@@ -182,6 +181,11 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                   TextFormField(
                     controller: _model.barcodeDataTextController,
                     focusNode: _model.barcodeDataFocusNode,
+                    onChanged: (_) => EasyDebounce.debounce(
+                      '_model.barcodeDataTextController',
+                      const Duration(milliseconds: 0),
+                      () => setState(() {}),
+                    ),
                     autofocus: true,
                     obscureText: false,
                     decoration: InputDecoration(
@@ -240,14 +244,18 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                       decoration: BoxDecoration(
                         color: FlutterFlowTheme.of(context).secondaryBackground,
                       ),
-                      child: SizedBox(
-                        width: 256.0,
-                        height: 256.0,
-                        child: custom_widgets.FFHRBarcodeWidget(
+                      child: Visibility(
+                        visible:
+                            _model.barcodeDataTextController.text != '',
+                        child: SizedBox(
                           width: 256.0,
                           height: 256.0,
-                          data: _model.barcodeDataTextController.text,
-                          barcodeType: _model.barcodeTypeDropDownValue,
+                          child: custom_widgets.FFHRBarcodeWidget(
+                            width: 256.0,
+                            height: 256.0,
+                            data: _model.barcodeDataTextController.text,
+                            barcodeType: _model.barcodeTypeDropDownValue,
+                          ),
                         ),
                       ),
                     ),
@@ -263,45 +271,6 @@ For any feature request, maintenance or consulting services related to the integ
 ---''',
                       selectable: true,
                       onTapLink: (_, url, __) => launchURL(url!),
-                    ),
-                  ),
-                  RichText(
-                    textScaler: MediaQuery.of(context).textScaler,
-                    text: TextSpan(
-                      children: [
-                        TextSpan(
-                          text: 'Created by ',
-                          style:
-                              FlutterFlowTheme.of(context).bodyMedium.override(
-                                    fontFamily: 'Readex Pro',
-                                    color: FlutterFlowTheme.of(context).primary,
-                                    letterSpacing: 0.0,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                        ),
-                        TextSpan(
-                          text: 'ms@FF.hr',
-                          style: const TextStyle(),
-                          mouseCursor: SystemMouseCursors.click,
-                          recognizer: TapGestureRecognizer()
-                            ..onTap = () async {
-                              await launchUrl(Uri(
-                                  scheme: 'mailto',
-                                  path: 'ms@ff.hr',
-                                  query: {
-                                    'subject': 'barcode.FF.hr',
-                                  }
-                                      .entries
-                                      .map((MapEntry<String, String> e) =>
-                                          '${Uri.encodeComponent(e.key)}=${Uri.encodeComponent(e.value)}')
-                                      .join('&')));
-                            },
-                        )
-                      ],
-                      style: FlutterFlowTheme.of(context).bodyMedium.override(
-                            fontFamily: 'Readex Pro',
-                            letterSpacing: 0.0,
-                          ),
                     ),
                   ),
                 ]
