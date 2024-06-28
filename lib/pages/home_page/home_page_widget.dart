@@ -3,7 +3,10 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/form_field_controller.dart';
 import '/custom_code/widgets/index.dart' as custom_widgets;
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_markdown/flutter_markdown.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'home_page_model.dart';
 export 'home_page_model.dart';
 
@@ -247,6 +250,58 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                           barcodeType: _model.barcodeTypeDropDownValue,
                         ),
                       ),
+                    ),
+                  ),
+                  Container(
+                    decoration: const BoxDecoration(),
+                    child: MarkdownBody(
+                      data: '''## Support
+---
+
+For any feature request, maintenance or consulting services related to the integration of this package, feel free to ask at [ms@ff.hr](mailto:ms@ff.hr)
+
+---''',
+                      selectable: true,
+                      onTapLink: (_, url, __) => launchURL(url!),
+                    ),
+                  ),
+                  RichText(
+                    textScaler: MediaQuery.of(context).textScaler,
+                    text: TextSpan(
+                      children: [
+                        TextSpan(
+                          text: 'Created by ',
+                          style:
+                              FlutterFlowTheme.of(context).bodyMedium.override(
+                                    fontFamily: 'Readex Pro',
+                                    color: FlutterFlowTheme.of(context).primary,
+                                    letterSpacing: 0.0,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                        ),
+                        TextSpan(
+                          text: 'ms@FF.hr',
+                          style: const TextStyle(),
+                          mouseCursor: SystemMouseCursors.click,
+                          recognizer: TapGestureRecognizer()
+                            ..onTap = () async {
+                              await launchUrl(Uri(
+                                  scheme: 'mailto',
+                                  path: 'ms@ff.hr',
+                                  query: {
+                                    'subject': 'barcode.FF.hr',
+                                  }
+                                      .entries
+                                      .map((MapEntry<String, String> e) =>
+                                          '${Uri.encodeComponent(e.key)}=${Uri.encodeComponent(e.value)}')
+                                      .join('&')));
+                            },
+                        )
+                      ],
+                      style: FlutterFlowTheme.of(context).bodyMedium.override(
+                            fontFamily: 'Readex Pro',
+                            letterSpacing: 0.0,
+                          ),
                     ),
                   ),
                 ]
