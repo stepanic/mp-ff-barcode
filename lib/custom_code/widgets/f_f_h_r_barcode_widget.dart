@@ -5,7 +5,6 @@ import 'index.dart'; // Imports other custom widgets
 import 'package:flutter/material.dart';
 // Begin custom widget code
 // DO NOT REMOVE OR MODIFY THE CODE ABOVE!
-
 import 'package:barcode_widget/barcode_widget.dart';
 
 class FFHRBarcodeWidget extends StatefulWidget {
@@ -13,10 +12,12 @@ class FFHRBarcodeWidget extends StatefulWidget {
     super.key,
     this.width,
     this.height,
+    required this.data,
   });
 
   final double? width;
   final double? height;
+  final String data;
 
   @override
   State<FFHRBarcodeWidget> createState() => _FFHRBarcodeWidgetState();
@@ -29,7 +30,7 @@ class _FFHRBarcodeWidgetState extends State<FFHRBarcodeWidget> {
       child: BarcodeWidget(
         backgroundColor: Colors.white,
         barcode: Barcode.qrCode(),
-        data: "Hello World",
+        data: widget.data,
         width: widget.width,
         height: widget.height,
       ),
