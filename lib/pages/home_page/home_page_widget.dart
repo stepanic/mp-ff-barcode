@@ -3,7 +3,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
-import '/actions/actions.dart' as action_blocks;
+import '/custom_code/actions/index.dart' as actions;
 import '/custom_code/widgets/index.dart' as custom_widgets;
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
@@ -267,11 +267,26 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                   ),
                   FFButtonWidget(
                     onPressed: () async {
-                      // share barcode
-                      await action_blocks.shareBarcode(
-                        context,
-                        barcodeData: _model.barcodeDataTextController.text,
+                      // share barcode as file
+                      _model.shareFileStatus = await actions.shareFile(
+                        _model.barcodeTypeDropDownValue!,
+                        _model.barcodeDataTextController.text,
                       );
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(
+                          content: Text(
+                            _model.shareFileStatus!,
+                            style: TextStyle(
+                              color: FlutterFlowTheme.of(context).primaryText,
+                            ),
+                          ),
+                          duration: const Duration(milliseconds: 4000),
+                          backgroundColor:
+                              FlutterFlowTheme.of(context).secondary,
+                        ),
+                      );
+
+                      setState(() {});
                     },
                     text: 'Share Barcode',
                     icon: const Icon(
