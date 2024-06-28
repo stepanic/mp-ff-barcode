@@ -1,10 +1,12 @@
 import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
 import '/custom_code/widgets/index.dart' as custom_widgets;
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
+import 'package:share_plus/share_plus.dart';
 import 'home_page_model.dart';
 export 'home_page_model.dart';
 
@@ -260,6 +262,46 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                             barcodeType: _model.barcodeTypeDropDownValue,
                           ),
                         ),
+                      ),
+                    ),
+                  ),
+                  Builder(
+                    builder: (context) => FFButtonWidget(
+                      onPressed: () async {
+                        if (!isWeb) {
+                          // Locally modified to use `shareXFiles` to share barcode as image
+                          // share barcode
+                          await Share.share(
+                            _model.barcodeDataTextController.text,
+                            sharePositionOrigin: getWidgetBoundingBox(context),
+                          );
+                        }
+                      },
+                      text: 'Share Barcode',
+                      icon: const Icon(
+                        Icons.share,
+                        size: 15.0,
+                      ),
+                      options: FFButtonOptions(
+                        width: double.infinity,
+                        height: 40.0,
+                        padding: const EdgeInsetsDirectional.fromSTEB(
+                            24.0, 0.0, 24.0, 0.0),
+                        iconPadding:
+                            const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                        color: FlutterFlowTheme.of(context).primary,
+                        textStyle:
+                            FlutterFlowTheme.of(context).titleSmall.override(
+                                  fontFamily: 'Readex Pro',
+                                  color: Colors.white,
+                                  letterSpacing: 0.0,
+                                ),
+                        elevation: 3.0,
+                        borderSide: const BorderSide(
+                          color: Colors.transparent,
+                          width: 1.0,
+                        ),
+                        borderRadius: BorderRadius.circular(8.0),
                       ),
                     ),
                   ),
