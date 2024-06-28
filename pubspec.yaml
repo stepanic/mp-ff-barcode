@@ -26,6 +26,7 @@ dependencies:
   flutter_localizations:
     sdk: flutter
   auto_size_text: 3.0.0
+  barcode_image: ^2.0.3
   barcode_widget: ^2.0.4
   cached_network_image: 3.3.1
   collection: 1.18.0
@@ -46,7 +47,7 @@ dependencies:
   path_provider_foundation: 2.4.0
   path_provider_platform_interface: 2.1.2
   provider: 6.1.2
-  share_plus: 9.0.0
+  share_plus: ^9.0.0
   shared_preferences: 2.2.2
   shared_preferences_android: 2.2.1
   shared_preferences_foundation: 2.3.4
