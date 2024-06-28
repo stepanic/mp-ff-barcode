@@ -30,6 +30,16 @@ Future<String> shareFile(
   // Draw the barcode
   drawBarcode(image, Barcode.qrCode(), barcodeData, font: packageImage.arial24);
 
+  final location = await getSaveLocation();
+  if (location != null) {
+    final file = XFile.fromData(
+      Uint8List.fromList(data),
+      name: '${bc.name}.png',
+      mimeType: 'image/png',
+    );
+    await file.saveTo(location.path);
+  }
+
   // Save the image
   File('test.png').writeAsBytesSync(packageImage.encodePng(image));
 
