@@ -1,2 +1,7 @@
 # mp-ff-barcode
-FlutterFlow Marketplace Item for a simple barcode generation
+
+A new Flutter project.
+
+## Getting Started
+
+FlutterFlow projects are built to run on the Flutter _stable_ release.
