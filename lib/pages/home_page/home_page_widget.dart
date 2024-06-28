@@ -265,7 +265,11 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                   Container(
                     decoration: const BoxDecoration(),
                     child: MarkdownBody(
-                      data: '''## Support
+                      data: '''## About
+---
+This package is based on [pub:barcode_widget](https://pub.dev/packages/barcode_widget). Please check each barcode type's constraints at an official demo [davbfr.github.io/dart_barcode](https://davbfr.github.io/dart_barcode).
+
+## Support
 ---
 
 For any feature request, maintenance or consulting services related to the integration of this package, feel free to ask at [ms@ff.hr](mailto:ms@ff.hr)
