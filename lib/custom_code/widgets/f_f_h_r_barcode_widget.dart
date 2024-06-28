@@ -30,13 +30,26 @@ class FFHRBarcodeWidget extends StatefulWidget {
 class _FFHRBarcodeWidgetState extends State<FFHRBarcodeWidget> {
   @override
   Widget build(BuildContext context) {
+    if (widget.barcodeType == 'EAN_13') {}
+
+    if (widget.barcodeType == 'QR_CODE' || widget.barcodeType == 'QR') {
+      return Container(
+        child: BarcodeWidget(
+          backgroundColor: Colors.white,
+          barcode: Barcode.qrCode(),
+          data: widget.data,
+          width: widget.width,
+          height: widget.height,
+        ),
+      );
+    }
+
     return Container(
-      child: BarcodeWidget(
-        backgroundColor: Colors.white,
-        barcode: Barcode.qrCode(),
-        data: widget.data,
-        width: widget.width,
-        height: widget.height,
+      child: Center(
+        child: Text(
+          'Not supported barcode type: ${widget.barcodeType}',
+          textAlign: TextAlign.center,
+        ),
       ),
     );
   }
