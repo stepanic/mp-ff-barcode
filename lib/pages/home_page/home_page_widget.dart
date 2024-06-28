@@ -1,5 +1,7 @@
+import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/form_field_controller.dart';
 import '/custom_code/widgets/index.dart' as custom_widgets;
 import 'package:flutter/material.dart';
 import 'home_page_model.dart';
@@ -21,6 +23,9 @@ class _HomePageWidgetState extends State<HomePageWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => HomePageModel());
+
+    _model.barcodeDataTextController ??= TextEditingController();
+    _model.barcodeDataFocusNode ??= FocusNode();
 
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
@@ -53,35 +58,209 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                   letterSpacing: 0.0,
                 ),
           ),
-          actions: const [],
+          actions: [
+            Align(
+              alignment: const AlignmentDirectional(0.0, 0.0),
+              child: Padding(
+                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 20.0, 0.0),
+                child: Text(
+                  'DEMO',
+                  style: FlutterFlowTheme.of(context).headlineMedium.override(
+                        fontFamily: 'Outfit',
+                        color: Colors.white,
+                        letterSpacing: 0.0,
+                      ),
+                ),
+              ),
+            ),
+          ],
           centerTitle: false,
           elevation: 2.0,
         ),
         body: SafeArea(
           top: true,
-          child: Column(
-            mainAxisSize: MainAxisSize.max,
-            children: [
-              Expanded(
-                child: Align(
-                  alignment: const AlignmentDirectional(0.0, 0.0),
-                  child: Container(
-                    decoration: BoxDecoration(
-                      color: FlutterFlowTheme.of(context).secondaryBackground,
-                    ),
-                    child: const SizedBox(
-                      width: 256.0,
-                      height: 256.0,
-                      child: custom_widgets.FFHRBarcodeWidget(
-                        width: 256.0,
-                        height: 256.0,
-                        data: 'Ja sam Matija Stepanic i ovo radi',
+          child: Align(
+            alignment: const AlignmentDirectional(0.0, 0.0),
+            child: Padding(
+              padding: const EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 0.0),
+              child: Container(
+                decoration: const BoxDecoration(),
+                child: SingleChildScrollView(
+                  child: Column(
+                    mainAxisSize: MainAxisSize.max,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Flexible(
+                        child: FlutterFlowDropDown<String>(
+                          controller:
+                              _model.barcodeTypeDropDownValueController ??=
+                                  FormFieldController<String>(
+                            _model.barcodeTypeDropDownValue ??= 'QR_CODE',
+                          ),
+                          options: List<String>.from([
+                            'AZTEC',
+                            'CODABAR',
+                            'CODE_128',
+                            'CODE_39',
+                            'DATA_MATRIX',
+                            'EAN_13',
+                            'EAN_2',
+                            'EAN_5',
+                            'EAN_8',
+                            'GS1_128',
+                            'ISBN',
+                            'ITF',
+                            'ITF_14',
+                            'ITF_16',
+                            'PDF417',
+                            'QR_CODE',
+                            'RM4SCC',
+                            'TELEPEN',
+                            'UPC_A',
+                            'UPC_E'
+                          ]),
+                          optionLabels: const [
+                            'Aztec',
+                            'CODABAR',
+                            'CODE 128',
+                            'CODE 39',
+                            'Data Matrix',
+                            'EAN 13',
+                            'EAN 2',
+                            'EAN 5',
+                            'EAN 8',
+                            'GS1 128',
+                            'ISBN',
+                            'ITF',
+                            'ITF 14',
+                            'ITF 16',
+                            'PDF417',
+                            'QR-Code',
+                            'RM4SCC',
+                            'Telepen',
+                            'UPC A',
+                            'UPC E'
+                          ],
+                          onChanged: (val) => setState(
+                              () => _model.barcodeTypeDropDownValue = val),
+                          width: double.infinity,
+                          height: 56.0,
+                          searchHintTextStyle:
+                              FlutterFlowTheme.of(context).labelMedium.override(
+                                    fontFamily: 'Readex Pro',
+                                    letterSpacing: 0.0,
+                                  ),
+                          searchTextStyle:
+                              FlutterFlowTheme.of(context).bodyMedium.override(
+                                    fontFamily: 'Readex Pro',
+                                    letterSpacing: 0.0,
+                                  ),
+                          textStyle:
+                              FlutterFlowTheme.of(context).bodyMedium.override(
+                                    fontFamily: 'Readex Pro',
+                                    letterSpacing: 0.0,
+                                  ),
+                          hintText: 'Please select barcode type...',
+                          searchHintText: 'Search for an barcode type...',
+                          icon: Icon(
+                            Icons.keyboard_arrow_down_rounded,
+                            color: FlutterFlowTheme.of(context).secondaryText,
+                            size: 24.0,
+                          ),
+                          fillColor:
+                              FlutterFlowTheme.of(context).secondaryBackground,
+                          elevation: 2.0,
+                          borderColor: FlutterFlowTheme.of(context).alternate,
+                          borderWidth: 2.0,
+                          borderRadius: 8.0,
+                          margin: const EdgeInsetsDirectional.fromSTEB(
+                              16.0, 4.0, 16.0, 4.0),
+                          hidesUnderline: true,
+                          isOverButton: true,
+                          isSearchable: true,
+                          isMultiSelect: false,
+                        ),
                       ),
-                    ),
+                      TextFormField(
+                        controller: _model.barcodeDataTextController,
+                        focusNode: _model.barcodeDataFocusNode,
+                        autofocus: true,
+                        obscureText: false,
+                        decoration: InputDecoration(
+                          labelText: 'Barcode Data',
+                          labelStyle:
+                              FlutterFlowTheme.of(context).labelMedium.override(
+                                    fontFamily: 'Readex Pro',
+                                    letterSpacing: 0.0,
+                                  ),
+                          hintText: 'please insert the barcode data...',
+                          hintStyle:
+                              FlutterFlowTheme.of(context).labelMedium.override(
+                                    fontFamily: 'Readex Pro',
+                                    letterSpacing: 0.0,
+                                  ),
+                          enabledBorder: OutlineInputBorder(
+                            borderSide: BorderSide(
+                              color: FlutterFlowTheme.of(context).alternate,
+                              width: 2.0,
+                            ),
+                            borderRadius: BorderRadius.circular(8.0),
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                            borderSide: BorderSide(
+                              color: FlutterFlowTheme.of(context).primary,
+                              width: 2.0,
+                            ),
+                            borderRadius: BorderRadius.circular(8.0),
+                          ),
+                          errorBorder: OutlineInputBorder(
+                            borderSide: BorderSide(
+                              color: FlutterFlowTheme.of(context).error,
+                              width: 2.0,
+                            ),
+                            borderRadius: BorderRadius.circular(8.0),
+                          ),
+                          focusedErrorBorder: OutlineInputBorder(
+                            borderSide: BorderSide(
+                              color: FlutterFlowTheme.of(context).error,
+                              width: 2.0,
+                            ),
+                            borderRadius: BorderRadius.circular(8.0),
+                          ),
+                          filled: true,
+                          fillColor: Colors.white,
+                        ),
+                        style: FlutterFlowTheme.of(context).bodyMedium.override(
+                              fontFamily: 'Readex Pro',
+                              letterSpacing: 0.0,
+                            ),
+                        validator: _model.barcodeDataTextControllerValidator
+                            .asValidator(context),
+                      ),
+                      Align(
+                        alignment: const AlignmentDirectional(0.0, 0.0),
+                        child: Container(
+                          decoration: BoxDecoration(
+                            color: FlutterFlowTheme.of(context)
+                                .secondaryBackground,
+                          ),
+                          child: SizedBox(
+                            width: 256.0,
+                            height: 256.0,
+                            child: custom_widgets.FFHRBarcodeWidget(
+                              width: 256.0,
+                              height: 256.0,
+                              data: _model.barcodeDataTextController.text,
+                              barcodeType: _model.barcodeTypeDropDownValue,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ].divide(const SizedBox(height: 20.0)),
                   ),
                 ),
               ),
-            ],
+            ),
           ),
         ),
       ),
