@@ -12,6 +12,13 @@ Level 1 Dependencies:
 1. Dependency A
    - Project: Barcode generation library
    - Copyright: (C) 2020, David PHAM-VAN <dev.nfet.net@gmail.com>
+   - URL: https://pub.dev/packages/barcode_widget
+   
+Level 2 Dependencies:
+
+1. Dependency A
+   - Project: Barcode generation library
+   - Copyright: (C) 2020, David PHAM-VAN <dev.nfet.net@gmail.com>
    - URL: https://pub.dev/packages/barcode
 
 =======================================================================
