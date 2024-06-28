@@ -84,7 +84,7 @@ class _AboutPageWidgetState extends State<AboutPageWidget> {
                   Container(
                     decoration: const BoxDecoration(),
                     child: MarkdownBody(
-                      data: '''## About
+                      data: '''## Dependency Credits
 ---
 This package is based on [pub:barcode_widget](https://pub.dev/packages/barcode_widget). Please check each barcode type's constraints at an official demo [davbfr.github.io/dart_barcode](https://davbfr.github.io/dart_barcode).
 
