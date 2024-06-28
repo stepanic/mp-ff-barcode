@@ -235,6 +235,8 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                           fontFamily: 'Readex Pro',
                           letterSpacing: 0.0,
                         ),
+                    maxLines: null,
+                    minLines: 3,
                     validator: _model.barcodeDataTextControllerValidator
                         .asValidator(context),
                   ),
