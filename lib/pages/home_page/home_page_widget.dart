@@ -249,10 +249,10 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                         visible:
                             _model.barcodeDataTextController.text != '',
                         child: SizedBox(
-                          width: 256.0,
+                          width: double.infinity,
                           height: 256.0,
                           child: custom_widgets.FFHRBarcodeWidget(
-                            width: 256.0,
+                            width: double.infinity,
                             height: 256.0,
                             data: _model.barcodeDataTextController.text,
                             barcodeType: _model.barcodeTypeDropDownValue,
