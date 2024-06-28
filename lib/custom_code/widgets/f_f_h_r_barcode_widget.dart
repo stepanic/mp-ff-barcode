@@ -40,6 +40,22 @@ class _FFHRBarcodeWidgetState extends State<FFHRBarcodeWidget> {
       barcode = Barcode.codabar();
     }
 
+    if (widget.barcodeType == 'CODE_128') {
+      barcode = Barcode.code128(escapes: true);
+    }
+
+    if (widget.barcodeType == 'CODE_39') {
+      barcode = Barcode.code39();
+    }
+
+    if (widget.barcodeType == 'CODE_93') {
+      barcode = Barcode.code39();
+    }
+
+    if (widget.barcodeType == 'DATA_MATRIX') {
+      barcode = Barcode.code39();
+    }
+
     if (widget.barcodeType == 'EAN_13') {
       barcode = Barcode.ean13(drawEndChar: true);
     }
@@ -54,12 +70,21 @@ class _FFHRBarcodeWidgetState extends State<FFHRBarcodeWidget> {
           backgroundColor: Colors.white,
           barcode: barcode,
           data: widget.data,
+          drawText: true,
+          textPadding: 5,
+          style: TextStyle(
+            color: Colors.black,
+            fontSize: 32.0,
+          ),
           width: widget.width,
           height: widget.height,
           errorBuilder: (context, error) => Center(
             child: Text(
               error,
-              style: TextStyle(color: Colors.black),
+              style: TextStyle(
+                color: Colors.red,
+                fontSize: 16.0,
+              ),
               textAlign: TextAlign.center,
             ),
           ),
@@ -72,6 +97,9 @@ class _FFHRBarcodeWidgetState extends State<FFHRBarcodeWidget> {
         child: Text(
           'Not supported barcode type: ${widget.barcodeType}',
           textAlign: TextAlign.center,
+          style: TextStyle(
+            color: Colors.red,
+          ),
         ),
       ),
     );

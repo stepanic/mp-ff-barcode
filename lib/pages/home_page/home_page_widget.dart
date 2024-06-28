@@ -63,7 +63,8 @@ class _HomePageWidgetState extends State<HomePageWidget> {
             Align(
               alignment: const AlignmentDirectional(0.0, 0.0),
               child: Padding(
-                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 20.0, 0.0),
+                padding:
+                    const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 20.0, 0.0),
                 child: Text(
                   'DEMO',
                   style: FlutterFlowTheme.of(context).headlineMedium.override(
@@ -169,8 +170,8 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                       borderColor: FlutterFlowTheme.of(context).alternate,
                       borderWidth: 2.0,
                       borderRadius: 8.0,
-                      margin:
-                          const EdgeInsetsDirectional.fromSTEB(16.0, 4.0, 16.0, 4.0),
+                      margin: const EdgeInsetsDirectional.fromSTEB(
+                          16.0, 4.0, 16.0, 4.0),
                       hidesUnderline: true,
                       isOverButton: true,
                       isSearchable: true,
@@ -246,8 +247,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                         color: FlutterFlowTheme.of(context).secondaryBackground,
                       ),
                       child: Visibility(
-                        visible:
-                            _model.barcodeDataTextController.text != '',
+                        visible: _model.barcodeDataTextController.text != '',
                         child: SizedBox(
                           width: double.infinity,
                           height: 256.0,
