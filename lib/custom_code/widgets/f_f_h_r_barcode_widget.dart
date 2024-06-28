@@ -25,6 +25,14 @@ class FFHRBarcodeWidget extends StatefulWidget {
 class _FFHRBarcodeWidgetState extends State<FFHRBarcodeWidget> {
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Container(
+      child: BarcodeWidget(
+        backgroundColor: Colors.white,
+        barcode: Barcode.qrCode(),
+        data: "Hello World",
+        width: widget.width,
+        height: widget.height,
+      ),
+    );
   }
 }
