@@ -72,6 +72,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                   child: custom_widgets.FFHRBarcodeWidget(
                     width: 300.0,
                     height: 300.0,
+                    data: 'Ja sam Matija Stepanic i ovo radi',
                   ),
                 ),
               ),
