@@ -15,11 +15,13 @@ class FFHRBarcodeWidget extends StatefulWidget {
     this.width,
     this.height,
     required this.data,
+    this.barcodeType,
   });
 
   final double? width;
   final double? height;
   final String data;
+  final String? barcodeType;
 
   @override
   State<FFHRBarcodeWidget> createState() => _FFHRBarcodeWidgetState();
