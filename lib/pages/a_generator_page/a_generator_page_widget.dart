@@ -68,7 +68,7 @@ class _AGeneratorPageWidgetState extends State<AGeneratorPageWidget> {
                 padding:
                     const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 20.0, 0.0),
                 child: Text(
-                  'Generator',
+                  'Generate',
                   style: FlutterFlowTheme.of(context).headlineMedium.override(
                         fontFamily: 'Outfit',
                         color: Colors.white,
