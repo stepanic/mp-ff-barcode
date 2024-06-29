@@ -20,8 +20,8 @@ import 'package:image/image.dart' as packageImage;
 Future<String> shareBarcode(
   String barcodeType,
   String barcodeData,
-  double barcodeWidth,
-  double barcodeHeight,
+  int barcodeWidth,
+  int barcodeHeight,
 ) async {
   // Create an image
   final image = packageImage.Image(
