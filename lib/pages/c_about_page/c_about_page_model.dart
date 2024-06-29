@@ -1,8 +1,8 @@
 import '/flutter_flow/flutter_flow_util.dart';
-import 'about_page_widget.dart' show AboutPageWidget;
+import 'c_about_page_widget.dart' show CAboutPageWidget;
 import 'package:flutter/material.dart';
 
-class AboutPageModel extends FlutterFlowModel<AboutPageWidget> {
+class CAboutPageModel extends FlutterFlowModel<CAboutPageWidget> {
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();
