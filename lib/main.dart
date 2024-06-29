@@ -83,7 +83,7 @@ class NavBarPage extends StatefulWidget {
 
 /// This is the private State class that goes with NavBarPage.
 class _NavBarPageState extends State<NavBarPage> {
-  String _currentPageName = 'aDemoPage';
+  String _currentPageName = 'aGeneratorPage';
   late Widget? _currentPage;
 
   @override
@@ -96,7 +96,7 @@ class _NavBarPageState extends State<NavBarPage> {
   @override
   Widget build(BuildContext context) {
     final tabs = {
-      'aDemoPage': const ADemoPageWidget(),
+      'aGeneratorPage': const AGeneratorPageWidget(),
       'bScanBarcodePage': const BScanBarcodePageWidget(),
       'cAboutPage': const CAboutPageWidget(),
     };
@@ -122,7 +122,7 @@ class _NavBarPageState extends State<NavBarPage> {
               Icons.qr_code,
               size: 24.0,
             ),
-            label: 'Demo',
+            label: 'Generator',
             tooltip: '',
           ),
           BottomNavigationBarItem(
