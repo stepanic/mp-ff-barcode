@@ -2,25 +2,25 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
-import 'about_page_model.dart';
-export 'about_page_model.dart';
+import 'c_about_page_model.dart';
+export 'c_about_page_model.dart';
 
-class AboutPageWidget extends StatefulWidget {
-  const AboutPageWidget({super.key});
+class CAboutPageWidget extends StatefulWidget {
+  const CAboutPageWidget({super.key});
 
   @override
-  State<AboutPageWidget> createState() => _AboutPageWidgetState();
+  State<CAboutPageWidget> createState() => _CAboutPageWidgetState();
 }
 
-class _AboutPageWidgetState extends State<AboutPageWidget> {
-  late AboutPageModel _model;
+class _CAboutPageWidgetState extends State<CAboutPageWidget> {
+  late CAboutPageModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => AboutPageModel());
+    _model = createModel(context, () => CAboutPageModel());
 
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }

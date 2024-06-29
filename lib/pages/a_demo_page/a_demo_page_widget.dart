@@ -7,25 +7,25 @@ import '/custom_code/actions/index.dart' as actions;
 import '/custom_code/widgets/index.dart' as custom_widgets;
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
-import 'home_page_model.dart';
-export 'home_page_model.dart';
+import 'a_demo_page_model.dart';
+export 'a_demo_page_model.dart';
 
-class HomePageWidget extends StatefulWidget {
-  const HomePageWidget({super.key});
+class ADemoPageWidget extends StatefulWidget {
+  const ADemoPageWidget({super.key});
 
   @override
-  State<HomePageWidget> createState() => _HomePageWidgetState();
+  State<ADemoPageWidget> createState() => _ADemoPageWidgetState();
 }
 
-class _HomePageWidgetState extends State<HomePageWidget> {
-  late HomePageModel _model;
+class _ADemoPageWidgetState extends State<ADemoPageWidget> {
+  late ADemoPageModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => HomePageModel());
+    _model = createModel(context, () => ADemoPageModel());
 
     _model.barcodeDataTextController ??= TextEditingController();
     _model.barcodeDataFocusNode ??= FocusNode();

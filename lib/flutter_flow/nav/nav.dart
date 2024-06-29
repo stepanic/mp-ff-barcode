@@ -38,18 +38,25 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, _) => const NavBarPage(),
         ),
         FFRoute(
-          name: 'HomePage',
-          path: '/homePage',
+          name: 'aDemoPage',
+          path: '/aDemoPage',
           builder: (context, params) => params.isEmpty
-              ? const NavBarPage(initialPage: 'HomePage')
-              : const HomePageWidget(),
+              ? const NavBarPage(initialPage: 'aDemoPage')
+              : const ADemoPageWidget(),
         ),
         FFRoute(
-          name: 'AboutPage',
-          path: '/aboutPage',
+          name: 'cAboutPage',
+          path: '/cAboutPage',
           builder: (context, params) => params.isEmpty
-              ? const NavBarPage(initialPage: 'AboutPage')
-              : const AboutPageWidget(),
+              ? const NavBarPage(initialPage: 'cAboutPage')
+              : const CAboutPageWidget(),
+        ),
+        FFRoute(
+          name: 'bScanBarcodePage',
+          path: '/bScanBarcodePage',
+          builder: (context, params) => params.isEmpty
+              ? const NavBarPage(initialPage: 'bScanBarcodePage')
+              : const BScanBarcodePageWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );
