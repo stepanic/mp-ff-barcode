@@ -69,7 +69,7 @@ class _DDecryptionScanBarcodePageWidgetState
               child: Padding(
                 padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 20.0, 0.0),
                 child: Text(
-                  'Scan',
+                  'Decrypt',
                   style: FlutterFlowTheme.of(context).headlineMedium.override(
                         fontFamily: 'Outfit',
                         color: Colors.white,

@@ -72,7 +72,7 @@ class _BEncryptedGeneratorPageWidgetState
               child: Padding(
                 padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 20.0, 0.0),
                 child: Text(
-                  'Generate',
+                  'Encrypt',
                   style: FlutterFlowTheme.of(context).headlineMedium.override(
                         fontFamily: 'Outfit',
                         color: Colors.white,
