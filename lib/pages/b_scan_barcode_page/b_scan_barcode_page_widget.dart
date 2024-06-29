@@ -136,15 +136,36 @@ More about the official QR/Barcode Scanner you can find it [here](https://docs.f
                           );
 
                           if (_model.barcodeScannerResult != '') {
-                            // show scanner results in text field
-                            setState(() {
-                              _model.barcodeDataTextController?.text =
-                                  _model.barcodeScannerResult;
-                              _model.barcodeDataTextController?.selection =
-                                  TextSelection.collapsed(
-                                      offset: _model.barcodeDataTextController!
-                                          .text.length);
-                            });
+                            if (_model.barcodeScannerResult == '-1') {
+                              // show error snackbar
+                              ScaffoldMessenger.of(context).clearSnackBars();
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                SnackBar(
+                                  content: Text(
+                                    'The scanner did not return any Barcode Data; please try again.',
+                                    style: TextStyle(
+                                      color: FlutterFlowTheme.of(context)
+                                          .primaryText,
+                                    ),
+                                  ),
+                                  duration: const Duration(milliseconds: 4000),
+                                  backgroundColor:
+                                      FlutterFlowTheme.of(context).error,
+                                ),
+                              );
+                            } else {
+                              // show scanner results in text field
+                              setState(() {
+                                _model.barcodeDataTextController?.text =
+                                    _model.barcodeScannerResult;
+                                _model.barcodeDataTextController?.selection =
+                                    TextSelection.collapsed(
+                                        offset: _model
+                                            .barcodeDataTextController!
+                                            .text
+                                            .length);
+                              });
+                            }
                           } else {
                             // show error snackbar
                             ScaffoldMessenger.of(context).clearSnackBars();
