@@ -10,6 +10,9 @@ import 'package:flutter/material.dart';
 
 import 'dart:io';
 
+import 'package:flutter/foundation.dart';
+import 'package:path_provider/path_provider.dart';
+import 'package:file_selector/file_selector.dart';
 import 'package:share_plus/share_plus.dart';
 import 'package:barcode_image/barcode_image.dart';
 import 'package:image/image.dart' as packageImage;
@@ -20,8 +23,8 @@ Future<String> shareFile(
 ) async {
   // Create an image
   final image = packageImage.Image(
-    width: 300,
-    height: 300,
+    width: 600,
+    height: 600,
   );
 
   // Fill it with a solid color (white)
@@ -30,21 +33,44 @@ Future<String> shareFile(
   // Draw the barcode
   drawBarcode(image, Barcode.qrCode(), barcodeData, font: packageImage.arial24);
 
+  final imageData = packageImage.encodePng(image);
+
+  final String? initialDirectory =
+      kIsWeb ? null : (await getApplicationDocumentsDirectory()).path;
+
+  final String? tempDirectory =
+      kIsWeb ? null : (await getTemporaryDirectory()).path;
+
+  print(initialDirectory);
+  print(tempDirectory);
+
   final location = await getSaveLocation();
-  if (location != null) {
-    final file = XFile.fromData(
-      Uint8List.fromList(data),
-      name: '${bc.name}.png',
-      mimeType: 'image/png',
-    );
-    await file.saveTo(location.path);
-  }
+
+  final filePath = '${tempDirectory}/barcode.png';
+
+  final file = XFile.fromData(
+    Uint8List.fromList(imageData),
+    name: filePath,
+    mimeType: 'image/png',
+  );
+  await file.saveTo(filePath);
+
+  // final location = await getSaveLocation();
+  // if (location != null) {
+  //   final file = XFile.fromData(
+  //     Uint8List.fromList(imageData),
+  //     name: 'barcode.png',
+  //     mimeType: 'image/png',
+  //   );
+  //   await file.saveTo(location.path);
+  // }
 
   // Save the image
-  File('test.png').writeAsBytesSync(packageImage.encodePng(image));
+  // File('test.png').writeAsBytesSync(imageData);
 
-  final result =
-      await Share.shareXFiles([XFile('test.png')], text: 'Great picture');
+  final result = await Share.shareXFiles([XFile(filePath)], text: 'Barcode');
+
+  await File(filePath).delete();
 
   if (result.status == ShareResultStatus.success) {
     print('Thank you for sharing the picture!');
@@ -58,7 +84,7 @@ Future<String> shareFile(
     print('Share status unavailable');
   }
 
-  File('test.png').deleteSync();
+  // File('barcode.png').deleteSync();
 
   return 'OK';
 }
