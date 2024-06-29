@@ -3,6 +3,7 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
+import 'package:flutter_markdown/flutter_markdown.dart';
 import 'b_scan_barcode_page_model.dart';
 export 'b_scan_barcode_page_model.dart';
 
@@ -82,6 +83,19 @@ class _BScanBarcodePageWidgetState extends State<BScanBarcodePageWidget> {
                 mainAxisSize: MainAxisSize.min,
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
+                  Container(
+                    decoration: const BoxDecoration(),
+                    child: MarkdownBody(
+                      data: '''# Generator Checker
+---
+
+This page uses an official FF QR/Barcode Scanner Action. You can run this app on multiple devices to test how the generated barcode works.
+
+More about the official QR/Barcode Scanner you can find it [here](https://docs.flutterflow.io/actions/actions/widget-ui-interactions/scan-barcode-qr-code).''',
+                      selectable: true,
+                      onTapLink: (_, url, __) => launchURL(url!),
+                    ),
+                  ),
                   FFButtonWidget(
                     onPressed: () async {
                       if (isWeb) {
