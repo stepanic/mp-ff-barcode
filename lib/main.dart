@@ -130,7 +130,7 @@ class _NavBarPageState extends State<NavBarPage> {
               Icons.qr_code_scanner,
               size: 24.0,
             ),
-            label: 'Scannner',
+            label: 'Scanner',
             tooltip: '',
           ),
           BottomNavigationBarItem(
