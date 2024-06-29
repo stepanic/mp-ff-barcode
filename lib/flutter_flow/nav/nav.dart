@@ -45,18 +45,32 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               : const AGeneratorPageWidget(),
         ),
         FFRoute(
-          name: 'cAboutPage',
-          path: '/cAboutPage',
+          name: 'eAboutPage',
+          path: '/eAboutPage',
           builder: (context, params) => params.isEmpty
-              ? const NavBarPage(initialPage: 'cAboutPage')
-              : const CAboutPageWidget(),
+              ? const NavBarPage(initialPage: 'eAboutPage')
+              : const EAboutPageWidget(),
         ),
         FFRoute(
-          name: 'bScanBarcodePage',
-          path: '/bScanBarcodePage',
+          name: 'cScanBarcodePage',
+          path: '/cScanBarcodePage',
           builder: (context, params) => params.isEmpty
-              ? const NavBarPage(initialPage: 'bScanBarcodePage')
-              : const BScanBarcodePageWidget(),
+              ? const NavBarPage(initialPage: 'cScanBarcodePage')
+              : const CScanBarcodePageWidget(),
+        ),
+        FFRoute(
+          name: 'bEncryptedGeneratorPage',
+          path: '/bEncryptedGeneratorPage',
+          builder: (context, params) => params.isEmpty
+              ? const NavBarPage(initialPage: 'bEncryptedGeneratorPage')
+              : const BEncryptedGeneratorPageWidget(),
+        ),
+        FFRoute(
+          name: 'dDecryptionScanBarcodePage',
+          path: '/dDecryptionScanBarcodePage',
+          builder: (context, params) => params.isEmpty
+              ? const NavBarPage(initialPage: 'dDecryptionScanBarcodePage')
+              : const DDecryptionScanBarcodePageWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );

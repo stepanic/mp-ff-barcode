@@ -1,8 +1,8 @@
 import '/flutter_flow/flutter_flow_util.dart';
-import 'b_scan_barcode_page_widget.dart' show BScanBarcodePageWidget;
+import 'c_scan_barcode_page_widget.dart' show CScanBarcodePageWidget;
 import 'package:flutter/material.dart';
 
-class BScanBarcodePageModel extends FlutterFlowModel<BScanBarcodePageWidget> {
+class CScanBarcodePageModel extends FlutterFlowModel<CScanBarcodePageWidget> {
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();

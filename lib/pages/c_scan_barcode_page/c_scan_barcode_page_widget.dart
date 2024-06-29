@@ -4,25 +4,25 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
-import 'b_scan_barcode_page_model.dart';
-export 'b_scan_barcode_page_model.dart';
+import 'c_scan_barcode_page_model.dart';
+export 'c_scan_barcode_page_model.dart';
 
-class BScanBarcodePageWidget extends StatefulWidget {
-  const BScanBarcodePageWidget({super.key});
+class CScanBarcodePageWidget extends StatefulWidget {
+  const CScanBarcodePageWidget({super.key});
 
   @override
-  State<BScanBarcodePageWidget> createState() => _BScanBarcodePageWidgetState();
+  State<CScanBarcodePageWidget> createState() => _CScanBarcodePageWidgetState();
 }
 
-class _BScanBarcodePageWidgetState extends State<BScanBarcodePageWidget> {
-  late BScanBarcodePageModel _model;
+class _CScanBarcodePageWidgetState extends State<CScanBarcodePageWidget> {
+  late CScanBarcodePageModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => BScanBarcodePageModel());
+    _model = createModel(context, () => CScanBarcodePageModel());
 
     _model.barcodeDataTextController ??= TextEditingController();
     _model.barcodeDataFocusNode ??= FocusNode();
