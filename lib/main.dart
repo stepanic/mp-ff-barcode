@@ -97,8 +97,10 @@ class _NavBarPageState extends State<NavBarPage> {
   Widget build(BuildContext context) {
     final tabs = {
       'aGeneratorPage': const AGeneratorPageWidget(),
-      'bScanBarcodePage': const BScanBarcodePageWidget(),
-      'cAboutPage': const CAboutPageWidget(),
+      'bEncryptedGeneratorPage': const BEncryptedGeneratorPageWidget(),
+      'cScanBarcodePage': const CScanBarcodePageWidget(),
+      'dDecryptionScanBarcodePage': const DDecryptionScanBarcodePageWidget(),
+      'eAboutPage': const EAboutPageWidget(),
     };
     final currentIndex = tabs.keys.toList().indexOf(_currentPageName);
 
@@ -127,10 +129,26 @@ class _NavBarPageState extends State<NavBarPage> {
           ),
           BottomNavigationBarItem(
             icon: Icon(
+              Icons.enhanced_encryption,
+              size: 24.0,
+            ),
+            label: 'Encrypted\nGenerator',
+            tooltip: '',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(
               Icons.qr_code_scanner,
               size: 24.0,
             ),
             label: 'Scanner',
+            tooltip: '',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(
+              Icons.lock_open,
+              size: 24.0,
+            ),
+            label: 'Decryption\n   Scanner',
             tooltip: '',
           ),
           BottomNavigationBarItem(
