@@ -38,11 +38,11 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, _) => const NavBarPage(),
         ),
         FFRoute(
-          name: 'aDemoPage',
-          path: '/aDemoPage',
+          name: 'aGeneratorPage',
+          path: '/aGeneratorPage',
           builder: (context, params) => params.isEmpty
-              ? const NavBarPage(initialPage: 'aDemoPage')
-              : const ADemoPageWidget(),
+              ? const NavBarPage(initialPage: 'aGeneratorPage')
+              : const AGeneratorPageWidget(),
         ),
         FFRoute(
           name: 'cAboutPage',

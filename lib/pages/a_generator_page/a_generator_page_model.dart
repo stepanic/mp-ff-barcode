@@ -1,9 +1,9 @@
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/form_field_controller.dart';
-import 'a_demo_page_widget.dart' show ADemoPageWidget;
+import 'a_generator_page_widget.dart' show AGeneratorPageWidget;
 import 'package:flutter/material.dart';
 
-class ADemoPageModel extends FlutterFlowModel<ADemoPageWidget> {
+class AGeneratorPageModel extends FlutterFlowModel<AGeneratorPageWidget> {
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();

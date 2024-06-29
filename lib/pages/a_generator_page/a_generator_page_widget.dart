@@ -7,25 +7,25 @@ import '/custom_code/actions/index.dart' as actions;
 import '/custom_code/widgets/index.dart' as custom_widgets;
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
-import 'a_demo_page_model.dart';
-export 'a_demo_page_model.dart';
+import 'a_generator_page_model.dart';
+export 'a_generator_page_model.dart';
 
-class ADemoPageWidget extends StatefulWidget {
-  const ADemoPageWidget({super.key});
+class AGeneratorPageWidget extends StatefulWidget {
+  const AGeneratorPageWidget({super.key});
 
   @override
-  State<ADemoPageWidget> createState() => _ADemoPageWidgetState();
+  State<AGeneratorPageWidget> createState() => _AGeneratorPageWidgetState();
 }
 
-class _ADemoPageWidgetState extends State<ADemoPageWidget> {
-  late ADemoPageModel _model;
+class _AGeneratorPageWidgetState extends State<AGeneratorPageWidget> {
+  late AGeneratorPageModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => ADemoPageModel());
+    _model = createModel(context, () => AGeneratorPageModel());
 
     _model.barcodeDataTextController ??= TextEditingController();
     _model.barcodeDataFocusNode ??= FocusNode();
@@ -68,7 +68,7 @@ class _ADemoPageWidgetState extends State<ADemoPageWidget> {
                 padding:
                     const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 20.0, 0.0),
                 child: Text(
-                  'DEMO',
+                  'Generator',
                   style: FlutterFlowTheme.of(context).headlineMedium.override(
                         fontFamily: 'Outfit',
                         color: Colors.white,
