@@ -92,7 +92,7 @@ class _BScanBarcodePageWidgetState extends State<BScanBarcodePageWidget> {
                       data: '''# Generator Checker
 ---
 
-This page uses an official FF QR/Barcode Scanner Action. You can run this app on multiple devices to test how the generated barcode works.
+This page uses an official FF QR/Barcode Scanner Action. You can run this app on multiple devices to test how the generated barcode works, share it and scan it.
 
 More about the official QR/Barcode Scanner you can find it [here](https://docs.flutterflow.io/actions/actions/widget-ui-interactions/scan-barcode-qr-code).''',
                       selectable: true,
