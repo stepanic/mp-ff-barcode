@@ -271,8 +271,8 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                       _model.shareBarcodeStatus = await actions.shareBarcode(
                         _model.barcodeTypeDropDownValue!,
                         _model.barcodeDataTextController.text,
-                        256,
-                        256,
+                        512,
+                        512,
                       );
                       if (_model.shareBarcodeStatus == 'OK') {
                         // show success snackbar
