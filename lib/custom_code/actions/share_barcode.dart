@@ -9,8 +9,8 @@ import 'package:flutter/material.dart';
 Future<String> shareBarcode(
   String barcodeType,
   String barcodeData,
-  double barcodeWidth,
-  double barcodeHeight,
+  int barcodeWidth,
+  int barcodeHeight,
 ) async {
   // Add your function code here!
 }
