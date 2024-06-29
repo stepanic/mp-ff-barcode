@@ -17,14 +17,16 @@ import 'package:share_plus/share_plus.dart';
 import 'package:barcode_image/barcode_image.dart';
 import 'package:image/image.dart' as packageImage;
 
-Future<String> shareFile(
+Future<String> shareBarcode(
   String barcodeType,
   String barcodeData,
+  double barcodeWidth,
+  double barcodeHeight,
 ) async {
   // Create an image
   final image = packageImage.Image(
-    width: 600,
-    height: 600,
+    width: barcodeWidth,
+    height: barcodeHeight,
   );
 
   // Fill it with a solid color (white)

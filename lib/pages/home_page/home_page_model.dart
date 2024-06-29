@@ -14,8 +14,8 @@ class HomePageModel extends FlutterFlowModel<HomePageWidget> {
   FocusNode? barcodeDataFocusNode;
   TextEditingController? barcodeDataTextController;
   String? Function(BuildContext, String?)? barcodeDataTextControllerValidator;
-  // Stores action output result for [Custom Action - shareFile] action in ShareBarcode widget.
-  String? shareFileStatus;
+  // Stores action output result for [Custom Action - shareBarcode] action in ShareBarcode widget.
+  String? shareBarcodeStatus;
 
   @override
   void initState(BuildContext context) {}

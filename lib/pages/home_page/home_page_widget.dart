@@ -268,23 +268,43 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                   FFButtonWidget(
                     onPressed: () async {
                       // share barcode as file
-                      _model.shareFileStatus = await actions.shareFile(
+                      _model.shareBarcodeStatus = await actions.shareBarcode(
                         _model.barcodeTypeDropDownValue!,
                         _model.barcodeDataTextController.text,
+                        1024.0,
+                        1024.0,
                       );
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        SnackBar(
-                          content: Text(
-                            _model.shareFileStatus!,
-                            style: TextStyle(
-                              color: FlutterFlowTheme.of(context).primaryText,
+                      if (_model.shareBarcodeStatus == 'OK') {
+                        // show success snackbar
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(
+                            content: Text(
+                              'Barcode is shared succesfully',
+                              style: TextStyle(
+                                color: FlutterFlowTheme.of(context).primaryText,
+                              ),
                             ),
+                            duration: const Duration(milliseconds: 4000),
+                            backgroundColor:
+                                FlutterFlowTheme.of(context).secondary,
                           ),
-                          duration: const Duration(milliseconds: 4000),
-                          backgroundColor:
-                              FlutterFlowTheme.of(context).secondary,
-                        ),
-                      );
+                        );
+                      } else {
+                        // show error snackbar
+                        ScaffoldMessenger.of(context).clearSnackBars();
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(
+                            content: Text(
+                              _model.shareBarcodeStatus!,
+                              style: TextStyle(
+                                color: FlutterFlowTheme.of(context).primaryText,
+                              ),
+                            ),
+                            duration: const Duration(milliseconds: 4000),
+                            backgroundColor: FlutterFlowTheme.of(context).error,
+                          ),
+                        );
+                      }
 
                       setState(() {});
                     },
