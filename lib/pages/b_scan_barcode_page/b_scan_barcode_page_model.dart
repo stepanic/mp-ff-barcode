@@ -7,6 +7,10 @@ class BScanBarcodePageModel extends FlutterFlowModel<BScanBarcodePageWidget> {
 
   final unfocusNode = FocusNode();
   var barcodeSannerResult = '';
+  // State field(s) for BarcodeData widget.
+  FocusNode? barcodeDataFocusNode;
+  TextEditingController? barcodeDataTextController;
+  String? Function(BuildContext, String?)? barcodeDataTextControllerValidator;
 
   @override
   void initState(BuildContext context) {}
@@ -14,5 +18,7 @@ class BScanBarcodePageModel extends FlutterFlowModel<BScanBarcodePageWidget> {
   @override
   void dispose() {
     unfocusNode.dispose();
+    barcodeDataFocusNode?.dispose();
+    barcodeDataTextController?.dispose();
   }
 }
