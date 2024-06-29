@@ -6,7 +6,7 @@ class BScanBarcodePageModel extends FlutterFlowModel<BScanBarcodePageWidget> {
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();
-  var barcodeSannerResult = '';
+  var barcodeScannerResult = '';
   // State field(s) for BarcodeData widget.
   FocusNode? barcodeDataFocusNode;
   TextEditingController? barcodeDataTextController;

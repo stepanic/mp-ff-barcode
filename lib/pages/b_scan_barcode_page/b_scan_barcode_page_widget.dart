@@ -127,7 +127,7 @@ More about the official QR/Barcode Scanner you can find it [here](https://docs.f
                             _model.barcodeDataTextController?.clear();
                           });
                           // start barcode scanner
-                          _model.barcodeSannerResult =
+                          _model.barcodeScannerResult =
                               await FlutterBarcodeScanner.scanBarcode(
                             '#C62828', // scanning line color
                             'Cancel', // cancel button text
@@ -135,11 +135,11 @@ More about the official QR/Barcode Scanner you can find it [here](https://docs.f
                             ScanMode.BARCODE,
                           );
 
-                          if (_model.barcodeSannerResult != '') {
+                          if (_model.barcodeScannerResult != '') {
                             // show scanner results in text field
                             setState(() {
                               _model.barcodeDataTextController?.text =
-                                  _model.barcodeSannerResult;
+                                  _model.barcodeScannerResult;
                               _model.barcodeDataTextController?.selection =
                                   TextSelection.collapsed(
                                       offset: _model.barcodeDataTextController!
