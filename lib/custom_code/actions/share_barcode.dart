@@ -5,9 +5,6 @@ import 'index.dart'; // Imports other custom actions
 import 'package:flutter/material.dart';
 // Begin custom action code
 // DO NOT REMOVE OR MODIFY THE CODE ABOVE!
-
-// ignore_for_file: always_specify_types
-
 import 'dart:io';
 
 import 'package:flutter/foundation.dart';
