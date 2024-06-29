@@ -6,9 +6,11 @@ import 'package:flutter/material.dart';
 // Begin custom action code
 // DO NOT REMOVE OR MODIFY THE CODE ABOVE!
 
-Future<String> shareFile(
+Future<String> shareBarcode(
   String barcodeType,
   String barcodeData,
+  double barcodeWidth,
+  double barcodeHeight,
 ) async {
-  return 'OK';
+  // Add your function code here!
 }

@@ -1,1 +1,1 @@
-export 'share_file.dart' show shareFile;
+export 'share_barcode.dart' show shareBarcode;
