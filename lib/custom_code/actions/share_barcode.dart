@@ -148,8 +148,8 @@ Future<String> shareBarcode(
         lastModified: DateTime.now(),
       ),
     ],
-    subject: 'Barcode - ${barcodeType} - ${barcodeData}',
-    text: 'Barcode - ${barcodeType} - ${barcodeData}',
+    subject: 'Barcode - ${barcodeType} - ${DateTime.timestamp().toString()}',
+    text: 'Barcode - ${barcodeType}\n\n${barcodeData}',
   );
 
   // Delete the temporary file
