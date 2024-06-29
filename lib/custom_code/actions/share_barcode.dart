@@ -116,7 +116,7 @@ Future<String> shareBarcode(
 
   // Draw the barcode
   try {
-    drawBarcode(image, barcode, barcodeData, font: packageImage.arial24);
+    drawBarcode(image, barcode, barcodeData, font: packageImage.arial48);
   } catch (e) {
     return 'BARCODE_DRAWING_FAILED';
   }
