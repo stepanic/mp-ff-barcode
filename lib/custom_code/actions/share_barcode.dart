@@ -12,7 +12,6 @@ import 'dart:io';
 
 import 'package:flutter/foundation.dart';
 import 'package:path_provider/path_provider.dart';
-import 'package:file_selector/file_selector.dart';
 import 'package:share_plus/share_plus.dart';
 import 'package:barcode_image/barcode_image.dart';
 import 'package:image/image.dart' as packageImage;
@@ -23,6 +22,89 @@ Future<String> shareBarcode(
   int barcodeWidth,
   int barcodeHeight,
 ) async {
+  if (barcodeData.isEmpty) {
+    return 'BARCODE_DATA_IS_EMPTY';
+  }
+
+  Barcode? barcode;
+
+  switch (barcodeType) {
+    case 'AZTEC':
+      barcode = Barcode.aztec();
+      break;
+    case 'CODABAR':
+      barcode = Barcode.codabar();
+      break;
+    case 'CODE_128':
+      barcode = Barcode.code128(escapes: true);
+      break;
+    case 'CODE_39':
+      barcode = Barcode.code39();
+      break;
+    case 'CODE_93':
+      barcode = Barcode.code93();
+      break;
+    case 'DATA_MATRIX':
+      barcode = Barcode.dataMatrix();
+      break;
+    case 'EAN_13':
+      barcode = Barcode.ean13(drawEndChar: true);
+      break;
+    case 'EAN_2':
+      barcode = Barcode.ean2();
+      break;
+    case 'EAN_5':
+      barcode = Barcode.ean5();
+      break;
+    case 'EAN_8':
+      barcode = Barcode.ean8(drawSpacers: true);
+      break;
+    case 'GS1_128':
+      barcode = Barcode.gs128(useCode128A: false, useCode128B: false);
+      break;
+    case 'ISBN':
+      barcode = Barcode.isbn(drawEndChar: true);
+      break;
+    case 'ITF':
+      barcode = Barcode.itf(zeroPrepend: true);
+      break;
+    case 'ITF_14':
+      barcode = Barcode.itf14();
+      break;
+    case 'ITF_16':
+      barcode = Barcode.itf16();
+      break;
+    case 'PDF417':
+      barcode = Barcode.pdf417();
+      break;
+    case 'QR_CODE':
+    case 'QR':
+      barcode = Barcode.qrCode(
+          // errorCorrectLevel: BarcodeQRCorrectionLevel.high,
+          // typeNumber: 8,
+          );
+      break;
+    case 'RM4SCC':
+      barcode = Barcode.rm4scc();
+      break;
+    case 'TELEPEN':
+      barcode = Barcode.telepen();
+      break;
+    case 'UPC_A':
+      barcode = Barcode.upcA();
+      break;
+    case 'UPC_E':
+      barcode = Barcode.upcE();
+      break;
+    default:
+      barcode = null;
+      break;
+  }
+
+  if (barcode == null) {
+    return 'BARCODE_NOT_SUPPORTED';
+  }
+
   // Create an image
   final image = packageImage.Image(
     width: barcodeWidth,
@@ -33,23 +115,23 @@ Future<String> shareBarcode(
   packageImage.fill(image, color: packageImage.ColorRgb8(255, 255, 255));
 
   // Draw the barcode
-  drawBarcode(image, Barcode.qrCode(), barcodeData, font: packageImage.arial24);
+  try {
+    drawBarcode(image, barcode, barcodeData, font: packageImage.arial24);
+  } catch (e) {
+    return 'BARCODE_DRAWING_FAILED';
+  }
 
+  // Encode the image as PNG
   final imageData = packageImage.encodePng(image);
 
-  final String? initialDirectory =
-      kIsWeb ? null : (await getApplicationDocumentsDirectory()).path;
-
+  // Get the temporary directory
   final String? tempDirectory =
       kIsWeb ? null : (await getTemporaryDirectory()).path;
 
-  print(initialDirectory);
-  print(tempDirectory);
-
-  final location = await getSaveLocation();
-
+  // Create a temporary file path
   final filePath = '${tempDirectory}/barcode.png';
 
+  // Save the image as temporary file
   final file = XFile.fromData(
     Uint8List.fromList(imageData),
     name: filePath,
@@ -57,36 +139,33 @@ Future<String> shareBarcode(
   );
   await file.saveTo(filePath);
 
-  // final location = await getSaveLocation();
-  // if (location != null) {
-  //   final file = XFile.fromData(
-  //     Uint8List.fromList(imageData),
-  //     name: 'barcode.png',
-  //     mimeType: 'image/png',
-  //   );
-  //   await file.saveTo(location.path);
-  // }
+  // Share the image over Share API
+  final result = await Share.shareXFiles(
+    [
+      XFile(
+        filePath,
+        mimeType: 'image/png',
+        lastModified: DateTime.now(),
+      ),
+    ],
+    subject: 'Barcode - ${barcodeType} - ${barcodeData}',
+    text: 'Barcode - ${barcodeType} - ${barcodeData}',
+  );
 
-  // Save the image
-  // File('test.png').writeAsBytesSync(imageData);
-
-  final result = await Share.shareXFiles([XFile(filePath)], text: 'Barcode');
-
+  // Delete the temporary file
   await File(filePath).delete();
 
   if (result.status == ShareResultStatus.success) {
-    print('Thank you for sharing the picture!');
+    return 'OK';
   }
 
   if (result.status == ShareResultStatus.dismissed) {
-    print('Did you not like the pictures?');
+    return 'SHARE_CANCELLED';
   }
 
   if (result.status == ShareResultStatus.unavailable) {
-    print('Share status unavailable');
+    return 'SHARE_UNAVAILABLE';
   }
-
-  // File('barcode.png').deleteSync();
 
   return 'OK';
 }
